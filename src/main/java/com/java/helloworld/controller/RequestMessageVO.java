@@ -1,10 +1,24 @@
 package com.java.helloworld.controller;
 
-public class RequestMessageVO {
+import java.io.Serializable;
+
+public class RequestMessageVO implements Serializable{
+
+    private static final long serialVersionUID = -1L;
 
     private String user_key;
     private String type;
     private String content;
+
+    public RequestMessageVO(){
+
+    }
+
+    public RequestMessageVO(String user_key, String type, String content) {
+        this.user_key = user_key;
+        this.type = type;
+        this.content = content;
+    }
 
     public String getUser_key() {
         return user_key;
