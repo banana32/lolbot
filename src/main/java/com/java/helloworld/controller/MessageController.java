@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MessageController {
     @PostMapping(value = "message", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String homeKeyBoardApi(@RequestBody RequestMessageVO vo) {
-        System.out.println(vo);
+    public ResponseMessageVO keyBoardApi(@RequestBody RequestMessageVO req_vo) {
+        System.out.println(req_vo);
 
-        return "{\"text\": \"hello lolbot\"}";
+        ResponseMessageVO res_vo = new ResponseMessageVO();
+        MessageVO mes_vo = new MessageVO();
+
+        mes_vo.setText("hello " + req_vo.getContent());
+        res_vo.setMessage(mes_vo);
+        return res_vo;
     }
 }
