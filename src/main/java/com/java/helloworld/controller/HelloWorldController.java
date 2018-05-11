@@ -7,8 +7,16 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Controller
 public class HelloWorldController {
 	
-	@RequestMapping("/")
+	@RequestMapping("/hello")
 	public String helloWorld() {
+		RiotKeyVO R = new RiotKeyVO();
+		try {
+			System.out.println("Summoer ID : " +R.GetID());
+			System.out.println(R.ChampionCall());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "helloWorld";
 	}
