@@ -13,11 +13,25 @@ public class BotController {
         ResponseMessageVO res_vo = new ResponseMessageVO();
         MessageVO mes_vo = new MessageVO();
 
+        RiotKeyVO r = new RiotKeyVO();
+        StringBuilder sb = new StringBuilder();
+
         switch(req_vo.getContent()) {
             case "어제 전적":
                 mes_vo.setText("이것은 어제 전적입니다.");
                 break;
             case "최근 전적":
+                sb.append("이것은 최근 전적입니다.");
+
+                try{
+                    r.GetID();
+                    //sb.append("\nChampion : "+ r.ChampionCall());
+                    //sb.append("\nSpector : "+r.SpectorCall());
+                    sb.append("\nMatch : "+r.MatchCall());
+
+                } catch (ClassNotFoundException e){
+                    e.printStackTrace();
+                }
                 mes_vo.setText("이것은 최근 전적입니다.");
                 break;
             default:
