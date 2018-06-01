@@ -20,7 +20,7 @@ public class BotController {
 
     @GetMapping(value="keyboard")
     public KeyboardVO keyboard(){
-        KeyboardVO keyboard = new KeyboardVO(new String[]{"�뼱�젣 �쟾�쟻", "理쒓렐 �쟾�쟻", "�븞�뀞 �븞�뀞"});
+        KeyboardVO keyboard = new KeyboardVO(new String[]{"어제 전적", "오늘 전적", "실시간 전적"});
 
         return keyboard;
     }

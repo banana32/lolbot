@@ -82,7 +82,7 @@ public class RiotKeyVO {
             Date D = new Date(Time);
             //HttpGet ChampionNameGet = new HttpGet(BaseURL + ChampionNameURL + Champion + "?locale=ko_KR&champData=all");
             //String GetChampion = Send2(Champion);
-            System.out.println("寃뚯엫ID " + GameId + " �씪�씤 : " + Lane + " �뿭�븷援� : " + Role +  " 梨뷀뵾�뼵 " + Champion + " 寃뚯엫�떆媛� " + D);
+            System.out.println("Game ID " + GameId + " Lane : " + Lane + " 역할 : " + Role +  " 챔피언 " + Champion + " 게임 날짜 " + D);
         }	
 		return response_string;		
 	}
