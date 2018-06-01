@@ -9,10 +9,13 @@ public class HelloWorldController {
 	
 	@RequestMapping("/hello")
 	public String helloWorld() {
+
+		//String SummonerName = "회로가주거씀돠엉";
+		String SummonerName = "pvman";
 		RiotKeyVO R = new RiotKeyVO();
 		try {
-			R.GetID();
-			System.out.println("Champion : " +R.ChampionCall());
+			R.GetID(SummonerName);
+			System.out.println("Champion : " +R.SummonerCall());
 			System.out.println("Spector : " +R.SpectorCall());
 			System.out.println("Match : " +R.MatchCall());
 		} catch (ClassNotFoundException e) {
