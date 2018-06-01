@@ -24,7 +24,7 @@ public class RiotKeyVO {
 	private static String Riot;
 	private static Long SummonerId;
 	private static Long AccountId;
-	private static String SummonerName = "회로가주거씀돠엉";//param필요	
+	private static String SummonerName = "�쉶濡쒓�二쇨굅���룧�뿁";//param�븘�슂	
 	HttpClient httpclient = HttpClientBuilder.create().build();
 	RiotKeyVO(){
 		BaseURL = "https://kr.api.riotgames.com/lol/";
@@ -32,7 +32,7 @@ public class RiotKeyVO {
 	}
 	public String ChampionCall() throws  ClassNotFoundException{
 		String ChampionURL = "champion-mastery/v3/champion-masteries/by-summoner/";
-		String SummonerId = "6082734"; //param필요
+		String SummonerId = "6082734"; //param�븘�슂
 		HttpGet ChampionGet = new HttpGet(BaseURL + ChampionURL + SummonerId);
 		Send(ChampionGet);
 		//System.out.print(response_string);
@@ -48,7 +48,7 @@ public class RiotKeyVO {
 		JSONObject json = new JSONObject(response_string);
 		SummonerId = json.getLong("id");
 		AccountId = json.getLong("accountId");
-		System.out.println("소환사 이름 : " + SummonerName + " 소환사 레벨 : " + json.getLong("summonerLevel")); 
+		System.out.println("�냼�솚�궗 �씠由� : " + SummonerName + " �냼�솚�궗 �젅踰� : " + json.getLong("summonerLevel")); 
 		
 		return response_string;			
 	}
@@ -72,7 +72,7 @@ public class RiotKeyVO {
 		JSONObject json = new JSONObject(response_string);
 		JSONArray j = json.getJSONArray("matches");
 		/*for(long a = 1; a< 500 ; a++)
-			Send2(a);*/
+			Send2(a);*/    
 		for (int i = 0; i <  j.length(); i++){
             GameId = json.getJSONArray("matches").getJSONObject(i).getLong("gameId");
             Lane = json.getJSONArray("matches").getJSONObject(i).getString("lane");
@@ -82,7 +82,7 @@ public class RiotKeyVO {
             Date D = new Date(Time);
             //HttpGet ChampionNameGet = new HttpGet(BaseURL + ChampionNameURL + Champion + "?locale=ko_KR&champData=all");
             //String GetChampion = Send2(Champion);
-            System.out.println("게임ID " + GameId + " 라인 : " + Lane + " 역할군 : " + Role +  " 챔피언 " + Champion + " 게임시간 " + D);
+            System.out.println("寃뚯엫ID " + GameId + " �씪�씤 : " + Lane + " �뿭�븷援� : " + Role +  " 梨뷀뵾�뼵 " + Champion + " 寃뚯엫�떆媛� " + D);
         }	
 		return response_string;		
 	}

@@ -16,11 +16,11 @@ public class BotController {
         mes_vo.setText("hello idiot " + req_vo.getContent());
         res_vo.setMessage(mes_vo);
         return res_vo;
-    }
+    }   
 
     @GetMapping(value="keyboard")
     public KeyboardVO keyboard(){
-        KeyboardVO keyboard = new KeyboardVO(new String[]{"어제 전적", "최근 전적", "안녕 안녕"});
+        KeyboardVO keyboard = new KeyboardVO(new String[]{"�뼱�젣 �쟾�쟻", "理쒓렐 �쟾�쟻", "�븞�뀞 �븞�뀞"});
 
         return keyboard;
     }
