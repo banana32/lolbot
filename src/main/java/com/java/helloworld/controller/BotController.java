@@ -26,12 +26,11 @@ public class BotController {
         }
         res_vo.setMessage(mes_vo);
         return res_vo;
-    }
+    }   
 
     @GetMapping(value="keyboard")
     public KeyboardVO keyboard(){
-        KeyboardVO keyboard = new KeyboardVO(new String[]{"어제 전적", "최근 전적"});
-
+        KeyboardVO keyboard = new KeyboardVO(new String[]{"어제 전적", "오늘 전적", "실시간 전적"});
         return keyboard;
     }
 }

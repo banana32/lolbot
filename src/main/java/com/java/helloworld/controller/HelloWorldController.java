@@ -11,10 +11,10 @@ public class HelloWorldController {
 	public String helloWorld() {
 		RiotKeyVO R = new RiotKeyVO();
 		try {
-			System.out.println("Summoer ID : " +R.GetID());
+			R.GetID();
 			System.out.println("Champion : " +R.ChampionCall());
 			System.out.println("Spector : " +R.SpectorCall());
-			//System.out.println("Match : " +R.MatchCall());
+			System.out.println("Match : " +R.MatchCall());
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
