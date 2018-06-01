@@ -13,7 +13,7 @@ public class BotController {
         ResponseMessageVO res_vo = new ResponseMessageVO();
         MessageVO mes_vo = new MessageVO();
 
-        mes_vo.setText("hello " + req_vo.getContent());
+        mes_vo.setText("hello idiot " + req_vo.getContent());
         res_vo.setMessage(mes_vo);
         return res_vo;
     }
