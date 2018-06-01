@@ -42,8 +42,7 @@ public class RiotKeyVO {
 	public String GetID(String SummonerName) throws  ClassNotFoundException{
 		String SummonerNameURL = "summoner/v3/summoners/by-name/";
 		HttpGet SummonerGet = new HttpGet(BaseURL + SummonerNameURL + SummonerName);
-		Send(SummonerGet);
-		
+		Send(SummonerGet);		
 		JSONObject json = new JSONObject(response_string);
 		SummonerId = json.getLong("id");
 		AccountId = json.getLong("accountId");
@@ -56,12 +55,12 @@ public class RiotKeyVO {
 		HttpGet SpectorGet = new HttpGet(BaseURL + SpectorURL + SummonerId);
 		//System.out.println(SummonerId);
 		if(Send(SpectorGet) == 1)
-			return response_string;	
-		
+			return response_string;			
 		System.out.println(response_string);		
 		JSONObject json = new JSONObject(response_string);
 		JSONArray j = json.getJSONArray("participants");
 		Long GameStartTime = json.getLong("gameStartTime");
+		Date Date = new Date(GameStartTime);
 		String GameMode = json.getString("gameMode");
 		String GameType = json.getString("gameType");
 		
@@ -72,7 +71,7 @@ public class RiotKeyVO {
 		Long Spell1;
 		Long Spell2;
 		Long Team;
-		System.out.println("게임 시간  " + GameStartTime + " 게임 모드 " + GameMode + "게임 타입 " + GameType);
+		System.out.println("게임 시간  " + Date + " 게임 모드 " + GameMode + "게임 타입 " + GameType);
 		for (int i = 0; i <  j.length(); i++){
             SummonerName = json.getJSONArray("participants").getJSONObject(i).getString("summonerName");
             Champion = json.getJSONArray("participants").getJSONObject(i).getLong("championId");
@@ -113,10 +112,11 @@ public class RiotKeyVO {
         }	
 		return response_string;		
 	}
-	public String MatchDetail() throws  ClassNotFoundException{		
+	public String MatchDetail(Long MatchID) throws  ClassNotFoundException{		
 		String MatchDetailURL = "match/v3/matches/";
-		HttpGet MatchGet = new HttpGet(BaseURL + MatchDetailURL + AccountId);
-		Long GameId;
+		HttpGet MatchGet = new HttpGet(BaseURL + MatchDetailURL + MatchID);
+		JSONObject player = null;		
+		String[] playerName = new String[10];
 		String Lane;
 		Long Champion;
 		Long Time;
@@ -124,9 +124,10 @@ public class RiotKeyVO {
 		if(Send(MatchGet) == 1)
 			return response_string;	
 		JSONObject json = new JSONObject(response_string);
-		JSONArray j = json.getJSONArray("matches");
+		JSONArray j = json.getJSONArray("participantIdentities");
 		for (int i = 0; i <  j.length(); i++){
-            GameId = json.getJSONArray("matches").getJSONObject(i).getLong("gameId");
+            player = json.getJSONArray("participantIdentities").getJSONObject(i).getJSONObject("player");
+            
             Lane = json.getJSONArray("matches").getJSONObject(i).getString("lane");
             Champion = json.getJSONArray("matches").getJSONObject(i).getLong("champion");
             Time = json.getJSONArray("matches").getJSONObject(i).getLong("timestamp");
@@ -134,7 +135,7 @@ public class RiotKeyVO {
             Date D = new Date(Time);
             //HttpGet ChampionNameGet = new HttpGet(BaseURL + ChampionNameURL + Champion + "?locale=ko_KR&champData=all");
             //String GetChampion = Send2(Champion);
-            System.out.println("Game ID " + GameId + " Lane : " + Lane + " 역할 : " + Role +  " 챔피언 " + Champion + " 게임 날짜 " + D);
+            System.out.println("Game ID " + MatchID + " Lane : " + Lane  +  " 챔피언 " + Champion + " 게임 날짜 " + D);
         }	
 		return response_string;		
 	}

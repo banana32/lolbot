@@ -9,7 +9,7 @@ public class BotController {
     @PostMapping(value = "message", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseMessageVO message(@RequestBody RequestMessageVO req_vo) {
         System.out.println(req_vo);
-
+        String SummonerName = "pvman";
         ResponseMessageVO res_vo = new ResponseMessageVO();
         MessageVO mes_vo = new MessageVO();
 
@@ -24,7 +24,7 @@ public class BotController {
                 sb.append("이것은 최근 전적입니다.");
 
                 try{
-                    r.GetID();
+                    r.GetID(SummonerName);
                     //sb.append("\nChampion : "+ r.ChampionCall());
                     //sb.append("\nSpector : "+r.SpectorCall());
                     sb.append("\nMatch : "+r.MatchCall());
