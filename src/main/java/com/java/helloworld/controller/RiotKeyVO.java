@@ -24,7 +24,7 @@ public class RiotKeyVO {
 	private static String Riot;
 	private static Long SummonerId;
 	private static Long AccountId;
-	private static String SummonerName = "�쉶濡쒓�二쇨굅���룧�뿁";//param�븘�슂	
+	private static String SummonerName = "회로가주거씀돠엉";
 	HttpClient httpclient = HttpClientBuilder.create().build();
 	RiotKeyVO(){
 		BaseURL = "https://kr.api.riotgames.com/lol/";
@@ -32,7 +32,7 @@ public class RiotKeyVO {
 	}
 	public String ChampionCall() throws  ClassNotFoundException{
 		String ChampionURL = "champion-mastery/v3/champion-masteries/by-summoner/";
-		String SummonerId = "6082734"; //param�븘�슂
+		String SummonerId = "6082734";
 		HttpGet ChampionGet = new HttpGet(BaseURL + ChampionURL + SummonerId);
 		Send(ChampionGet);
 		//System.out.print(response_string);
@@ -48,7 +48,7 @@ public class RiotKeyVO {
 		JSONObject json = new JSONObject(response_string);
 		SummonerId = json.getLong("id");
 		AccountId = json.getLong("accountId");
-		System.out.println("�냼�솚�궗 �씠由� : " + SummonerName + " �냼�솚�궗 �젅踰� : " + json.getLong("summonerLevel")); 
+		System.out.println("소환사 이름 : " + SummonerName + " 소환사 레벨 : " + json.getLong("summonerLevel")); 
 		
 		return response_string;			
 	}
